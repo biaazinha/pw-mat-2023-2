@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo da área de uma elipse</title>
+</head>
+<body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    function Form() {
+        // Criação de referências para elementos do DOM usando hook useRef
+        const raioMaiorRef = React.useRef();
+        const raioMenorRef = React.useRef();
+        const resultadoRef = React.useRef();
+
+        // Função para calcular a área da elipse
+        function calcular(event) {
+            // Obtém os valores dos raios a partir das referências
+            let raioMaior = Number(raioMaiorRef.current.value)
+            let raioMenor = Number(raioMenorRef.current.value);
+
+            // Calcula a área da elipse usando a fórmula matemática
+            let area = raioMaior * raioMenor * Math.PI;
+
+            // Exibe o resultado formatado
+            resultadoRef.current.textContent = `Área: ${area}`;
+        }
+
+        // Renderização do componente Form
+        return (
+            <>
+                <h1>Cálculo da área de uma elipse</h1>
+                <form>
+                    <div>
+                        <label>
+                            <span>Medida do raio maior:</span><br />
+                            <input ref={raioMaiorRef} onChange={calcular} type="number" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Medida do raio menor:</span><br />
+                            <input ref={raioMenorRef} onChange={calcular} type="number" />
+                        </label>
+                    </div>
+                    <div ref={resultadoRef}></div>
+                </form>
+            </>
+        )
+    }
+
+    // "Encaixando" o novo elemento na estrutura da página
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Form />)
+
+  </script>
+  
+</body>
+</html>
