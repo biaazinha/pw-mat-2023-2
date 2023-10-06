@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Home from './Home'
 import Exercicio1 from './exercicios/01'
+import Exercicio2 from './exercicios/02'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <ul style={{ listStyleType: 'none' /* Lista sem marcadores*/}}>
           <li><Link to="/">Página inicial</Link></li>
           <li><Link to="/01">Exercício 1</Link></li>
+          <li><Link to="/02">Exercício 2</Link></li>
         </ul>
 
         <hr/>
@@ -20,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/01" element={<Exercicio1/>}/>
+            <Route path="/02" element={<Exercicio2/>}/>
           </Routes>
         </div>
         </BrowserRouter>
